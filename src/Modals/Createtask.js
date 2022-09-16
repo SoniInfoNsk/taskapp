@@ -21,20 +21,20 @@ function Createtask({ modal, toggle }) {
                      <textarea rows ='5' className='textarea' value={description}> </textarea>
                     </div>
                     <div>
-                    <label> Date of creation</label>
-                     <textarea rows ='5' className='textarea' value={''}> </textarea>
+                    <label> Date of creation</label> <br/>
+                    <input type="date" />
                     </div>
                     <div>
-                    <label> Date of Updation</label>
-                     <textarea rows ='5' className='textarea' value={''}> </textarea>
+                    <label> Date of Updation</label><br/>
+                    <input type="date" />
                     </div>
                     <div>
-                    <label> End date of the task </label>
-                     <textarea rows ='5' className='textarea' value={''}> </textarea>
+                    <label> End date of the task </label><br/>
+                    <input type="date" />
                     </div>
                     <div>
                     <label> Status of the task </label>
-                     <textarea rows ='5' className='textarea' value={''}> </textarea>
+                    
                     </div>
                 </form>
             </ModalBody>
