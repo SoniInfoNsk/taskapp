@@ -2,10 +2,28 @@
 import React, { useState } from 'react'
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-function Createtask({ modal, toggle }) {
+function Createtask({ modal, toggle , save }) {
 
      const [taskname, setTaskname] = useState('')
      const [description, setDescription] = useState('')
+
+    const handlechange = (e) => {
+       const {name ,value} = e.target ;
+
+       if(name === "taskName"){
+         setTaskname(value)
+       } else {
+        setDescription(value)
+       }
+    }
+
+
+    const handleSave = () =>{
+           let taskobj = {}
+           taskobj['Name']= taskname
+           taskobj['Description']= description
+           save(taskobj)
+    }
 
     return (
         <Modal isOpen={modal} toggle={toggle} >
@@ -14,23 +32,23 @@ function Createtask({ modal, toggle }) {
                 <form>
                     <div>
                         <label> Task Name</label>
-                        <input type='text' className='inputstyle' value={taskname}/>
+                        <input type='text' className='inputstyle' value={taskname} onChange={handlechange} name ="taskName"/>
                     </div>
                     <div>
                     <label>Description</label>
-                     <textarea rows ='5' className='textarea' value={description}> </textarea>
+                     <textarea rows ='5' className='textarea' value={description} onChange={handlechange} name="description"> </textarea>
                     </div>
                     <div>
                     <label> Date of creation</label> <br/>
-                    <input type="date" />
+                    <input type="date" onChange={handlechange} />
                     </div>
                     <div>
                     <label> Date of Updation</label><br/>
-                    <input type="date" />
+                    <input type="date" onChange={handlechange}/>
                     </div>
                     <div>
                     <label> End date of the task </label><br/>
-                    <input type="date" />
+                    <input type="date" onChange={handlechange}/>
                     </div>
                     <div>
                     <label> Status of the task </label>
@@ -39,7 +57,7 @@ function Createtask({ modal, toggle }) {
                 </form>
             </ModalBody>
             <ModalFooter>
-                <Button color="primary" onClick={toggle}>
+                <Button color="primary" onClick={handleSave}>
                     Create
                 </Button>{' '}
                 <Button color="secondary" onClick={toggle}>
