@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
-import { Button, Modal } from 'react-bootstrap'
+import { Button,  } from 'react-bootstrap'
 import Createtask from '../Modals/Createtask'
+
+
+
 
 function Tasklist() {
  
@@ -8,16 +11,7 @@ function Tasklist() {
    const [tasklist, setTasklist] = useState([])
 
 
-   useEffect(() => {
-    
-    let arr = localStorage.getItem ("tasklist")
-    
-    if(arr){
-        let obj = JSON.parse (arr)
-        setTasklist(obj)
-    }
-
-   }, [third])
+   
    
 
    const toggle =() =>{
@@ -27,8 +21,7 @@ function Tasklist() {
 
    const saveTask = (taskobj ) =>{
       let tempList= tasklist
-       tempList.push(taskobj)
-       localStorage.setItem("tasklist",JSON.stringify(tempList))
+       tempList.push(taskobj)      
        setTasklist(tempList)
        setModal(false)
    }
@@ -41,7 +34,7 @@ function Tasklist() {
             </div>
             <div className='task-container'>
 
-              {tasklist.map ((obj)=> <li>{obj.Name} </li>)}
+              { tasklist.map ((obj)=> <li>{obj.Name}</li>)}
 
 
             </div>
