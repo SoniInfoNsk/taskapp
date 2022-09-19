@@ -6,6 +6,8 @@ function Createtask({ modal, toggle , save }) {
 
      const [taskname, setTaskname] = useState('')
      const [description, setDescription] = useState('')
+     
+     
 
     const handlechange = (e) => {
        const {name ,value} = e.target ;
@@ -17,6 +19,7 @@ function Createtask({ modal, toggle , save }) {
        }
     }
 
+   
 
     const handleSave = () =>{
            let taskobj = {}
@@ -39,7 +42,7 @@ function Createtask({ modal, toggle , save }) {
                      <textarea rows ='5' className='textarea' value={description} onChange={handlechange} name="description"> </textarea>
                     </div>
                     <div>
-                    <label> Date of creation</label> <br/>
+                    <label>Date of Creation</label> <br/>
                     <input type="date" onChange={handlechange} />
                     </div>
                     <div>
@@ -47,12 +50,17 @@ function Createtask({ modal, toggle , save }) {
                     <input type="date" onChange={handlechange}/>
                     </div>
                     <div>
-                    <label> End date of the task </label><br/>
+                    <label> End Date of the Task </label><br/>
                     <input type="date" onChange={handlechange}/>
                     </div>
                     <div>
-                    <label> Status of the task </label>
-                    
+                    <label> Status of the Task </label> <br/>
+                   
+                    <select>
+                        <option value={}>Incomplete</option>
+                        <option>Inprogress</option>
+                        <option>Completed</option>
+                    </select>
                     </div>
                 </form>
             </ModalBody>

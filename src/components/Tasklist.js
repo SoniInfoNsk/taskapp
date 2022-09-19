@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button,  } from 'react-bootstrap'
 import Createtask from '../Modals/Createtask'
+import Card from 'react-bootstrap/Card';
 
 
 
@@ -34,7 +35,18 @@ function Tasklist() {
             </div>
             <div className='task-container'>
 
-              { tasklist.map ((obj)=> <li>{obj.Name}</li>)}
+              { tasklist.map ((obj)=> 
+              
+              <div>
+                     <Card style={{ width: '18rem' }}>
+      <Card.Body>
+        
+           {obj.Name}
+         
+      </Card.Body>
+    </Card>
+              </div>
+               )}
 
 
             </div>
