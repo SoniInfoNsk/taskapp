@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button, } from 'react-bootstrap'
 import Createtask from '../Modals/Createtask'
-
+import Card from './Card'
 
 
 
@@ -13,11 +13,7 @@ function Tasklist() {
     const [bgtask,setBgtask] = useState("#31E1F7")
      
 
-    const bgtaskchange =() =>{
-       
-       let newbgtask = "#C3F8FF"
-        setBgtask (newbgtask)
-    }
+    
     
     useEffect(()=>{
         let arr = localStorage.getItem("tasklist")
@@ -29,8 +25,14 @@ function Tasklist() {
         } 
     },[])
 
-
-
+    const deleteTask =(index) =>{
+      let templist = tasklist
+       templist.splice (index, 1)
+       localStorage.setItem("tasklist", JSON.stringify(templist))
+       setTasklist(templist)
+       window.location.reload()
+    }
+ 
     const toggle = () => {
 
         setModal(!modal);
@@ -52,14 +54,9 @@ function Tasklist() {
             </div>
             <div className='task-container'>
 
-                {tasklist.map((obj) =>
+                {tasklist.map((obj,index) => <Card taskobj={obj} index={index}  deleteTask={deleteTask}/>
 
-                    <div className='taskbox' style={{backgroundColor:bgtask}}>
-
-                        <li style={{ color: '#008CBA' }}> Task name : {obj.Name}</li>
-                        <li style={{ color: '#008CBA' }}> Description :{obj.Description}</li>
-
-                    </div>
+                    
                 )}
 
 
