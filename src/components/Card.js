@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState ,useEffect} from 'react'
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditTask from '../Modals/EditTask';
 
 
 
-
-function Card({taskobj, index,deleteTask}) {
+function Card({taskobj, index,deleteTask , updateListArray}) {
+    const [modal,setModal] = useState(false)
     const colors = [
         {
             primaryColor : "#5D93E1",
@@ -29,6 +30,16 @@ function Card({taskobj, index,deleteTask}) {
         }
     ]
 
+
+    const toggle = () =>{
+       setModal(!modal)
+
+    }
+
+    const updateTask = (obj) =>{
+       updateListArray (obj,index)
+
+    }
     const handleDelete = () => {
  
         deleteTask(index)
@@ -40,10 +51,10 @@ function Card({taskobj, index,deleteTask}) {
     <ul>
         <li style={{ color: 'white' }}>Task Name: {taskobj.Name}</li>
         <li style={{ color: 'white' }}> Description :{taskobj.Description}</li>
-        <EditIcon className='editicon'/>
+        <EditIcon className='editicon' onClick ={()=> setModal(true)}/>
         <DeleteIcon className='deleteicon' onClick={handleDelete}/>
     </ul>
-
+ <EditTask modal={modal} toggle={toggle} updateTask={updateTask}  taskobj={taskobj}/>
     </div>
   )
 }
