@@ -7,7 +7,6 @@ function Createtask({ modal, toggle , save }) {
      const [taskname, setTaskname] = useState('')
      const [description, setDescription] = useState('')
      
-     
 
     const handlechange = (e) => {
        const {name ,value} = e.target ;
@@ -32,7 +31,7 @@ function Createtask({ modal, toggle , save }) {
         <Modal isOpen={modal} toggle={toggle} >
             <ModalHeader toggle={toggle}>Create Task </ModalHeader>
             <ModalBody>
-                <form>
+                <form >
                     <div>
                         <label> Task Name</label>
                         <input type='text' className='inputstyle' value={taskname} onChange={handlechange} name ="taskName"/>
@@ -56,8 +55,8 @@ function Createtask({ modal, toggle , save }) {
                     <div>
                     <label> Status of the Task </label> <br/>
                    
-                    <select>
-                        <option value={}>Incomplete</option>
+                    <select >
+                        <option>Incomplete</option>
                         <option>Inprogress</option>
                         <option>Completed</option>
                     </select>
