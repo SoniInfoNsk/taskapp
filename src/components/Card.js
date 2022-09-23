@@ -41,7 +41,7 @@ function Card({taskobj, index,deleteTask , updateListArray}) {
 
     }
     const handleDelete = () => {
- 
+        
         deleteTask(index)
 
     }
@@ -51,10 +51,13 @@ function Card({taskobj, index,deleteTask , updateListArray}) {
     <ul>
         <li style={{ color: 'white' }}>Task Name: {taskobj.Name}</li>
         <li style={{ color: 'white' }}> Description :{taskobj.Description}</li>
-        <EditIcon className='editicon' onClick ={()=> setModal(true)}/>
+        <EditIcon className='editicon' onClick ={()=> setModal(true)} />
         <DeleteIcon className='deleteicon' onClick={handleDelete}/>
+       
     </ul>
- <EditTask modal={modal} toggle={toggle} updateTask={updateTask}  taskobj={taskobj}/>
+   
+    <EditTask modal={modal} toggle={toggle} updateTask={updateTask}  taskobj ={taskobj}/>
+ 
     </div>
   )
 }

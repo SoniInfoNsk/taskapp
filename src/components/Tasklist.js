@@ -26,6 +26,7 @@ function Tasklist() {
     },[])
 
     const deleteTask =(index) =>{
+       
       let templist = tasklist
        templist.splice (index, 1)
        localStorage.setItem("tasklist", JSON.stringify(templist))
@@ -33,6 +34,15 @@ function Tasklist() {
        window.location.reload()
     }
  
+     const updateListArray =(obj,index)=> {
+       let templist = tasklist
+       templist[index] = obj
+       localStorage.setitem("tasklist" ,JSON.stringify (templist))
+       setTasklist (templist)
+       window.location.reload()
+     }
+
+
     const toggle = () => {
 
         setModal(!modal);
@@ -54,9 +64,8 @@ function Tasklist() {
             </div>
             <div className='task-container'>
 
-                {tasklist.map((obj,index) => <Card taskobj={obj} index={index}  deleteTask={deleteTask}/>
-
-                    
+                {tasklist && tasklist.map((obj,index) => <Card taskobj ={obj} index={index} key={index} deleteTask={deleteTask} updateListArray = {updateListArray}/>
+  
                 )}
 
 

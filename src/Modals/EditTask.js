@@ -21,24 +21,26 @@ function EditTask({ modal, toggle , updateTask, taskobj}) {
 
    
 
-    const handleUpdate = (e) =>{
+    const handleUpdate = (e) => {
+     
      e.preventDefault();
      let tempobj = {}
      tempobj["Name"] = taskname
      tempobj["Desciption"] = description
-     updateTask (tempobj);
-
+     updateTask (tempobj)
+    
     }
 
     useEffect(() => {
-     setTaskname(taskobj.Name)
-     setDescription(taskobj.Description)
+    setTaskname (taskobj.Name)
+    setDescription (taskobj.Description)
     }, [])
+
     
 
     return (
         <Modal isOpen={modal} toggle={toggle} >
-            <ModalHeader toggle={toggle}>Upadate Task </ModalHeader>
+            <ModalHeader toggle={toggle}>Update Task </ModalHeader>
             <ModalBody>
                 <form >
                     <div>
@@ -62,7 +64,7 @@ function EditTask({ modal, toggle , updateTask, taskobj}) {
                     <input type="date" onChange={handlechange}/>
                     </div>
                     <div>
-                    <label> Status of the Task </label> <br/>
+                    <label>Status of the Task</label> <br/>
                    
                     <select >
                         <option>Incomplete</option>
@@ -73,7 +75,7 @@ function EditTask({ modal, toggle , updateTask, taskobj}) {
                 </form>
             </ModalBody>
             <ModalFooter>
-                <Button color="primary" onClick={handleUpdate}>
+                <Button color="primary" onClick={handleUpdate} >
                    Update
                 </Button>{' '}
                 <Button color="secondary" onClick={toggle}>
