@@ -6,6 +6,7 @@ function Createtask({ modal, toggle , save }) {
 
      const [taskname, setTaskname] = useState('')
      const [description, setDescription] = useState('')
+     const [doc, setdoc] = useState( )
      
 
     const handlechange = (e) => {
@@ -17,13 +18,13 @@ function Createtask({ modal, toggle , save }) {
         setDescription(value)
        }
     }
-
-   
+       
 
     const handleSave = () =>{
            let taskobj = {}
            taskobj['Name']= taskname
            taskobj['Description']= description
+           taskobj['doc']  = doc
            save(taskobj)
     }
 
@@ -42,7 +43,7 @@ function Createtask({ modal, toggle , save }) {
                     </div>
                     <div>
                     <label>Date of Creation</label> <br/>
-                    <input type="date" onChange={handlechange} />
+                    <input type="date" onChange={e=> setdoc (e.target.value)} value={doc}  name="doc"/>
                     </div>
                     <div>
                     <label> Date of Updation</label><br/>

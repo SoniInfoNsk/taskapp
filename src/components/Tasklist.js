@@ -30,14 +30,17 @@ function Tasklist() {
       let templist = tasklist
        templist.splice (index, 1)
        localStorage.setItem("tasklist", JSON.stringify(templist))
+       
        setTasklist(templist)
        window.location.reload()
     }
  
      const updateListArray =(obj,index)=> {
+     
        let templist = tasklist
        templist[index] = obj
-       localStorage.setitem("tasklist" ,JSON.stringify (templist))
+       localStorage.setItem("tasklist" ,JSON.stringify (templist))
+       
        setTasklist (templist)
        window.location.reload()
      }
